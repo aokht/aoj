@@ -19,10 +19,27 @@ def swap(array, i, j):
 
 def parse(lines):
     return [
+        parseInt(lines[0]),
+        parseIntArray(lines[1].split(' ')),
     ]
 
 def solve(args):
-    pass
+    N, A = args
+
+    isCompleted = False
+    count = 0
+
+    while not isCompleted:
+        isCompleted = True
+        for i in range(1, len(A)):
+            if A[i-1] > A[i]:
+                swap(A, i-1, i)
+                count += 1
+                isCompleted = False
+
+    printArray(A)
+    print(count)
+
 
 # {{{ main
 def main():
